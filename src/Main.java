@@ -8,6 +8,7 @@ public class Main {
     private final static PetMachine petMachine = new PetMachine();
 
     public static void main(String[] args) {
+        scanner.useDelimiter("\\n");
 
         var option = -1;
 
@@ -26,12 +27,17 @@ public class Main {
             option = scanner.nextInt();
 
             switch (option){
+                case 1 -> petMachine.takeAShower();
+                case 2 -> setWater();
+                case 3 -> setShampoo();
                 case 4 -> verifyWater();
                 case 5 -> verifyShampoo();
                 case 6 -> getCheckIfHasPetInMachine();
                 case 7 -> setPetInPetMachine();
                 case 8 -> petMachine.removePet();
                 case 9 -> petMachine.whash();
+                case 0 -> System.exit(0);
+                default -> System.out.println("Opção inválida");
             }
 
         } while (option !=0);
@@ -49,12 +55,12 @@ public class Main {
 
     private static void verifyShampoo() {
         var amount = petMachine.getShampoo();
-        System.out.println("A máquina está no momento com " + amount + "litro(s) de shampoo");
+        System.out.println("A máquina está no momento com " + amount + " litro(s) de shampoo");
     }
 
     private static void verifyWater() {
         var amount = petMachine.getWater();
-        System.out.println("A máquina está no momento com " + amount + "litro(s) de água");
+        System.out.println("A máquina está no momento com " + amount + " litro(s) de água");
     }
 
     private static void getCheckIfHasPetInMachine() {
@@ -70,7 +76,7 @@ public class Main {
         }
         var pet = new Pet(name);
         petMachine.setPet(pet);
-        System.out.println("O pet" + pet.getName() + "foi colocado na máquina");
+
     }
 
 }
